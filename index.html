@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reis'in Sitesi</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080808;color:white;font-family:Arial,sans-serif}
+.bg{position:fixed;inset:0;z-index:-1}
+.bg img{position:absolute;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.5s;filter:brightness(.45)}
+.bg img.active{opacity:1}
+main{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px}
+h1{font-size:clamp(38px,9vw,70px);text-shadow:0 0 20px black}
+p{font-size:19px}
+button{padding:14px 24px;border-radius:30px;border:1px solid white;background:#222;color:white;font-size:16px}
+</style>
+</head>
+<body>
+<div class="bg">
+<img src="foto1.jpg" class="active" alt="">
+<img src="foto2.jpg" alt="">
+<img src="foto3.jpg" alt="">
+</div>
+<main>
+<h1>REİSİN SİTESİ 😎</h1>
+<p>Buraya kadar geldiysen adamsın!</p>
+<button onclick="degistir()">Fotoğrafı değiştir 🔥</button>
+</main>
+<script>
+const resimler=document.querySelectorAll('.bg img');
+let sira=0;
+function degistir(){
+resimler[sira].classList.remove('active');
+sira=(sira+1)%resimler.length;
+resimler[sira].classList.add('active');
+}
+setInterval(degistir,5000);
+</script>
+</body>
+</html>
